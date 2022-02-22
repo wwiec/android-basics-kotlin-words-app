@@ -16,6 +16,7 @@
 -->
 <resources>
     <string-array name="words">
+        <item>AVA</item>
         <item>aargh</item>
         <item>about</item>
         <item>acidic</item>
@@ -181,6 +182,13 @@
         <item>public</item>
         <item>puppy</item>
         <item>puzzle</item>
+        <item>poopy</item>
+        <item>poophead</item>
+        <item>poops</item>
+        <item>poopoo</item>
+        <item>pringle</item>
+        <item>poobear</item>
+        <item>poop</item>
         <item>quality</item>
         <item>quantity</item>
         <item>query</item>

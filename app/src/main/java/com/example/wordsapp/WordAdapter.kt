@@ -16,12 +16,14 @@
 package com.example.wordsapp
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Button
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 
@@ -51,7 +53,7 @@ class WordAdapter(private val letterId: String, context: Context) :
     }
 
     class WordViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val button = view.findViewById<Button>(R.id.button_item)
+        val button: Button = view.findViewById<Button>(R.id.button_item)
     }
 
     override fun getItemCount(): Int = filteredWords.size
@@ -65,7 +67,7 @@ class WordAdapter(private val letterId: String, context: Context) :
             .inflate(R.layout.item_view, parent, false)
 
         // Setup custom accessibility delegate to set the text read
-        layout.accessibilityDelegate = Accessibility
+        layout.accessibilityDelegate = LetterAdapter
 
         return WordViewHolder(layout)
     }
@@ -81,6 +83,10 @@ class WordAdapter(private val letterId: String, context: Context) :
 
         // Set the text of the WordViewHolder
         holder.button.text = item
+
+        holder.button.setOnClickListener {
+            Toast.makeText(context, "Your word is $item", Toast.LENGTH_SHORT).show()
+        }
 
     }
     // Setup custom accessibility delegate to set the text read with
