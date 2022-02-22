@@ -17,6 +17,8 @@ package com.example.wordsapp
 
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.ACTION_VIEW
+import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -47,7 +49,7 @@ class WordAdapter(private val letterId: String, context: Context) :
             // Returns a collection that it has shuffled in place
             .shuffled()
             // Returns the first n items as a [List]
-            .take(5)
+            //.take(10)
             // Returns a sorted version of that [List]
             .sorted()
     }
@@ -86,8 +88,10 @@ class WordAdapter(private val letterId: String, context: Context) :
 
         holder.button.setOnClickListener {
             Toast.makeText(context, "Your word is $item", Toast.LENGTH_SHORT).show()
+            val queryUrl: Uri = Uri.parse("${DetailActivity.SEARCH_PREFIX}${item}")
+            val intent = Intent(ACTION_VIEW, queryUrl)
+            context.startActivity(intent)
         }
-
     }
     // Setup custom accessibility delegate to set the text read with
     // an accessibility service
